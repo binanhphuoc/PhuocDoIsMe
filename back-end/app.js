@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const questionpd = require('./routes/questionpd');
+const admin = require('./routes/AdminLogin/adminStory');
 const bodyParser = require('body-parser');
 
 require('dotenv').config();
@@ -19,5 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use('/questionpd', questionpd);
+app.use('/admin', admin);
 
 module.exports = app;

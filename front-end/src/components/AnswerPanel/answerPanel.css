@@ -1,0 +1,20 @@
+.div-bg{
+    background-image: url("img4.jpg");
+    /* Full height */
+    height: 100vh;
+    width: 100vw; 
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    
+}
+
+.div-bg.answerpanel{
+    padding: 200px 0px 300px 0px;
+}
+
+.answerPanel.spacing{
+    margin-top: 5vh;
+}

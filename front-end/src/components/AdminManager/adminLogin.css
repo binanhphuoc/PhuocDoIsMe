@@ -1,0 +1,37 @@
+.adminlogin.center
+{
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+    padding:20vh 10vw 10vh 10vw;
+    background-color: whitesmoke;
+    overflow: auto;
+}
+
+.adminlogin.but
+{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.adminlogin.spacing
+{
+    display: block;
+    margin-bottom: 2vh;
+}
+
+.adminlogin.linespace
+{
+    margin-right: 3vw;
+    margin-bottom: 2vh;
+}
+
+.adminlogin.body
+{
+    height: 20vh;
+}
+
+.storylist.photogrid{
+    margin-top: 15vh;
+}
