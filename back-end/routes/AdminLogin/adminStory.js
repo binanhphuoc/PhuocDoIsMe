@@ -69,13 +69,17 @@ router.post('/binpdo/getAllStory', (req, res) => {
 //////////////////////
     ///// THESE APIs ARE MADE FOR TESTING
 //////////////////////
-router.post('/binpdo/getStory', (req, res) => {
+router.post('/binpdo/getStoryFile', (req, res) => {
     s3module.getFile(req.body.key, (err, result) => {
         if (err)
             return res.status(400).json({success: false, error: err});
         return res.json({success:true, data: result.data});
     })
 });
+
+router.post('/binpdo/saveStory', upload.single('intro-image'), (req, res) => {
+    
+})
 
 
 

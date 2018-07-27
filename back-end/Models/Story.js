@@ -11,6 +11,10 @@ var StorySchema = new Schema({
     file: {
         type: String,
         required: true
+    },
+    selected: {
+        type: Boolean,
+        required: true
     }
 });
 

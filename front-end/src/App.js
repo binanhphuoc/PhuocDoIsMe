@@ -4,7 +4,7 @@ import Intropanel from './components/IntroPanel/intropanel';
 import AskPanel from './components/AskPanel/askPanel';
 import AnswerPanel from './components/AnswerPanel/answerPanel';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import AdminLogin from './components/AdminManager/adminLogin';
+import EditStory from './components/AdminManager/editStory';
 import GetStory from './components/AdminManager/getStory';
 import ListStory from './components/AdminManager/storyList';
 
@@ -19,7 +19,7 @@ class App extends Component {
       <Route exact path='/' component={Intropanel} />
       <Route exact path='/questionpd/retrieve' component={AnswerPanel} />
       <Route exact path='/questionpd/ask' component={AskPanel} />
-      <Route exact path='/admin/binpdo' component={AdminLogin} />
+      <Route exact path='/admin/binpdo/editstory' component={EditStory} />
       <Route exact path='/admin/binpdo/getstory' component={GetStory} />
       <Route exact path='/admin/binpdo/liststory' component={ListStory} />
       {/*

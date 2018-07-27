@@ -1,19 +1,46 @@
 .adminlogin.center
 {
-    height: 100vh;
-    width: 100vw;
-    margin: auto;
-    padding:20vh 10vw 10vh 10vw;
+    height: 80vh;
+    width: 500px;
+    /*margin: 100px auto auto auto;*/
+    padding:40px 40px 40px 40px;
     background-color: whitesmoke;
     overflow: auto;
+    opacity: 1;
+    transition: all 0.15s ease;
+    position: fixed;
+    left: calc((100vw - 500px)/2);
+    top: 100px + 10vh;
 }
 
-.adminlogin.but
+.adminlogin.hide
 {
-    margin-left: auto;
-    margin-right: auto;
+    height: 80vh;
+    width: 500px;
+    /*margin: 100px auto auto auto;*/
+    padding:40px 40px 40px 40px;
+    background-color: whitesmoke;
+    overflow: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.15s ease;
+    position: fixed;
+    left: calc((100vw - 500px)/2);
+    top: 100px + 10vh;
+}
+
+.adminlogin.but.left-align
+{
+    margin-left: 0px;
+    display: inline-block;
+}
+
+.adminlogin.but.right-align
+{
+    float:right;
     display: block;
 }
+
 
 .adminlogin.spacing
 {
@@ -34,4 +61,8 @@
 
 .storylist.photogrid{
     margin-top: 15vh;
+}
+
+.storylist.container{
+    flex: 1;
 }

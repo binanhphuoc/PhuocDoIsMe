@@ -8,25 +8,25 @@ class Navbar extends Component {
 
     return (
 
-      <nav class="navbar navbar-expand-lg bg-opacity fixed-top">
-        <a class="navbar-brand" href="#">
+      <nav className="navbar navbar-expand-lg bg-opacity fixed-top">
+        <a className="navbar-brand" href="#">
           <img src={logo} className="animate-size"/>
         </a>
-          <ul class="navbar-nav nav-ul">
-            <li class="nav-li nav-item active">
-              <a class="nav-a nav-link" href="/">About <span class="sr-only">(current)</span></a>
+          <ul className="navbar-nav nav-ul">
+            <li className="nav-li nav-item active">
+              <a className="nav-a nav-link" href="/">About <span className="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-li nav-item active">
-              <a class="nav-a nav-link" href="/questionpd/ask">Ask me <span class="sr-only">(current)</span></a>
+            <li className="nav-li nav-item active">
+              <a className="nav-a nav-link" href="/questionpd/ask">Ask me <span className="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-li nav-item active">
-              <a class="nav-a nav-link" href="/questionpd/retrieve">Retrieve answer<span class="sr-only">(current)</span></a>
+            <li className="nav-li nav-item active">
+              <a className="nav-a nav-link" href="/questionpd/retrieve">Retrieve answer<span className="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-li nav-item active">
-              <a class="nav-a nav-link" href="#">Contact<span class="sr-only">(current)</span></a>
+            <li className="nav-li nav-item active">
+              <a className="nav-a nav-link" href="#">Contact<span className="sr-only">(current)</span></a>
             </li>
           </ul>
       </nav>
