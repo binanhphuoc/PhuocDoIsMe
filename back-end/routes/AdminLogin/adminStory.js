@@ -177,5 +177,28 @@ router.post('/binpdo/saveStory', upload.single('intro-image'), (req, res) => {
 })
 
 
+router.post('/binpdo/deleteStory', (req, res) => {
+    Story.findById(req.body.id).exec()
+    .then((result) => {
+        s3module.deleteFile(result.file, (err) => {
+            if (err)
+            {
+                console.log(err);
+                return res.status(400).json({error:err});
+            }
+            Story.remove({_id:req.body.id}).exec()
+            .then(() => {
+                
+                return res.json({msg: 'Successfully delete story.'});
+            }).catch(err => {
+                console.log(err);
+                return res.status(400).json({error:err});
+            })
+        })
+    }).catch(err => {
+        console.log(err);
+        return res.status(400).json({error:err});
+    })
+})
 
 module.exports = router;

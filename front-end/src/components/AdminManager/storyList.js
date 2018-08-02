@@ -152,7 +152,7 @@ const customTagStyle = {
         if (this.state.hidden.value)
         {
 
-            const story = this.state.stories[this.state.images[index].pos];
+            const story = this.state.stories[index-1];
             const file = this.state.images[index].src;
             console.log(story);
             var data = {
@@ -239,6 +239,29 @@ const customTagStyle = {
                 onCancelClick={() => this.setState(
                     {hidden:{value:true, storyIndex:this.state.hidden.storyIndex}
                 })}
+                onDeleteClick={(showResponse) => {
+                    var index = this.state.hidden.storyIndex;
+                    var id = this.state.stories[index]._id;
+                    StoryAPI.deleteStory(id, (err, result) => {
+                        showResponse(err, result);
+                        if (err)
+                            console.log(err);
+                        else
+                        {
+                            // Remove the story
+                            var stories = this.state.stories.slice();
+                            stories.splice(index, 1);
+                            
+                            // Remove the file
+                            var imgs = this.state.images.slice();
+                            imgs.splice(index+1, 1);
+
+                            // Set state
+                            this.setState({stories, images: imgs});
+
+                        }
+                    })
+                }}
                 hidden={this.state.hidden.value}
                 onSaveClick={(data, showResponse) => {
                     StoryAPI.saveStory(data, (err, res) => {

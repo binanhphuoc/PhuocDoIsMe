@@ -41,6 +41,21 @@
     display: block;
 }
 
+.adminlogin.but.center-align
+{
+    margin-left: 100px;
+    background-color: transparent;
+    color: rgb(44, 118, 255);
+    transition: all 0.1s ease-in;
+}
+
+.adminlogin.but.center-align:hover
+{
+    margin-left:100px;
+    background-color: gainsboro;
+    color: rgb(44, 118, 255);
+    transition: all 0.1s ease-in;
+}
 
 .adminlogin.spacing
 {

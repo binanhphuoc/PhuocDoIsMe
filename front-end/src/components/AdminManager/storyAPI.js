@@ -77,6 +77,18 @@ var saveStory = (data, cb) => {
     });
 }
 
+var deleteStory = (id, cb) => {
+    axios.post('/admin/binpdo/deleteStory', {id})
+    .then((result) => {
+        console.log(result);
+        cb(null, {msg: 'Successfully delete!'});
+    })
+    .catch((error) => {
+        console.log(error.response);
+        cb(error);
+    })
+}
+
 module.exports = {
     
     getAllStory,
@@ -98,7 +110,7 @@ module.exports = {
     //                       The retrieved file will be stored in 'file',
     //                       and it belongs to the Story at index 'index'.
 
-    saveStory
+    saveStory,
 
     // .then((response)=>{
     //    console.log(response);
@@ -106,4 +118,6 @@ module.exports = {
     // .catch( (error) => {
     //  console.log(error.response.data);
     // })
+
+    deleteStory
 }

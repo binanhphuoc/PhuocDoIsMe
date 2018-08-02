@@ -24,6 +24,8 @@ import './adminLogin.css'
         this.onDrop = this.onDrop.bind(this)
         //this.fileUpload = this.fileUpload.bind(this)
         this.handleChange = this.handleChange.bind(this);
+        this.onDeleteClick = this.onDeleteClick.bind(this);
+        this.showResponse = this.showResponse.bind(this);
     }
 
     handleChange(e, att)
@@ -60,25 +62,22 @@ import './adminLogin.css'
             }
         }
         console.log(data);
-        this.props.onSaveClick(data, (err, res) => {
-            if (err)
+        this.props.onSaveClick(data, this.showResponse)
+    }
+
+    onDeleteClick() {
+        this.props.onDeleteClick(this.showResponse);
+    }
+
+    showResponse(err, res) {
+        if (err)
             {
                 console.log(err);
                 this.setState({msg: err});
             }
             else
                 this.setState({msg: res.msg});
-        })
     }
-
-    /*
-    getSnapshotBeforeUpdate(prevProps)
-    {
-        if (prevProps.hidden)
-            this.state.prevHidden = prevProps.hidden;
-        return null;
-    }
-    */
 
     static getDerivedStateFromProps(props, state)
     {
@@ -174,7 +173,8 @@ import './adminLogin.css'
             </form>
             <div>
                 <input id="editStory-save" className="adminlogin but btn btn-primary left-align" type="submit" value="SAVE" onClick={this.onFormSubmit}/>
-                <input className="adminlogin but btn btn-danger right-align" type="submit" value="Cancel" onClick={this.props.onCancelClick}/>
+                <input className="adminlogin but btn center-align" type="submit" value="Cancel" onClick={this.props.onCancelClick}/>
+                <input className="adminlogin but btn btn-danger right-align" type="submit" value="Delete" onClick={this.onDeleteClick}/>
             </div>
           </div>
       );
