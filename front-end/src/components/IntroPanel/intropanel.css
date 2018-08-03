@@ -2,3 +2,27 @@
   width: 100%;
   height: 100%;
 }
+
+.intropanel.div{
+  position: relative;
+}
+
+.intropanel.title{
+  position: absolute;
+  font-family: navfont;
+  font-size: 5em;
+}
+
+.intropanel.subtitle{
+  position: absolute;
+  font-family: navfont;
+  font-size: 2em;
+}
+
+.intropanel.subtitle.show{
+  opacity: 1;
+}
+
+.intropanel.subtitle.hidden{
+  opacity: 0;
+}
