@@ -16,6 +16,8 @@ class Intropanel extends Component {
     super(props);
     this.state = {
       stories: [],
+      signal: true,
+      selected: 0
     }
 
     StoryAPI.getAllStory((stories)=>{
@@ -28,7 +30,10 @@ class Intropanel extends Component {
           stories[i].done = false;
           stories[i].index = i;
           this.setState({stories});
+          this.storyClass.push(false);
       }
+
+      this.storyClass[0] = true;
     },
     (file, index) => {
         var stories = this.state.stories.slice();
@@ -38,25 +43,40 @@ class Intropanel extends Component {
     })
 
     this.mapping = this.mapping.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
   
+  /////////////////////////////////
   icon = {
     prev: iconPrev,
     next: iconNext
   }
+  oldIndex = 0;
+  storyClass=[];
   //images = this.importAll(require.context('./Intropanel/images', false, /\.(png|jpe?g|svg)$/));
 
   mapping(story)
   {
+
     return(
-      <StoryItem story={story}/>
+      <StoryItem story={story} start={this.storyClass[story.index]}/>
     )
+  }
+
+  onChange(index, element)
+  {
+    this.storyClass[this.oldIndex] = false;
+    this.storyClass[index] = true;
+    this.oldIndex = index;
+    this.setState({signal:!this.state.signal, selected:index});
+    
   }
 
   render(){
 
     return(
-      <Carousel showStatus={false} showThumbs={false} icon={this.icon}>
+      <Carousel selectedItem={this.state.selected} showStatus={false} showThumbs={false} icon={this.icon}
+        onChange={this.onChange}>
         {this.state.stories.map(this.mapping)}
       </Carousel>
     )};

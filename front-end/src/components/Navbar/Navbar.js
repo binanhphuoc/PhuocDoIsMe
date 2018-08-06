@@ -4,11 +4,26 @@ import logo from './Picture1.png';
 
 class Navbar extends Component {
 
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+      navClass: 'show'
+    }
+  }
+
   render() {
 
     return (
-
-      <nav className="navbar navbar-expand-lg bg-opacity fixed-top">
+      <div>
+      
+      <nav className={"navbar navbar-expand-lg bg-opacity fixed-top "+this.state.navClass}
+      onMouseEnter={() => {
+        this.setState({navClass:'show'});
+      }}
+      onMouseLeave={() => {
+        this.setState({navClass:'hidden'});
+      }}>
         <a className="navbar-brand" href="#">
           <img src={logo} className="animate-size"/>
         </a>
@@ -30,6 +45,15 @@ class Navbar extends Component {
             </li>
           </ul>
       </nav>
+
+      <div style={{zIndex:5,position:"fixed", top:0, height:100+"px", width:100+"vw"}}
+      onMouseEnter={() => {
+        this.setState({navClass:'show'});
+      }}
+      onMouseLeave={() => {
+        this.setState({navClass:'hidden'});
+      }}/>
+      </div>
     );
   }
 }
