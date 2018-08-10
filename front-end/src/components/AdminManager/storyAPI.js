@@ -2,7 +2,7 @@ const axios = require('axios');
 const base64 = require('base64-arraybuffer');
 
 var getAllStory = (setStory, setFile) => {
-    axios.post('/admin/binpdo/getAllStory')
+    axios.post('/story/getAllStory')
         .then((result) => {
             console.log(result);
             setStory(result.data.data);
@@ -15,7 +15,7 @@ var getAllStory = (setStory, setFile) => {
 
 var getFile = (key,i, cb) => {
     console.log(i);
-    axios.post('/admin/binpdo/getStoryFile', {key})
+    axios.post('/story/getStoryFile', {key})
     .then((result) =>
     {
         console.log(result);
@@ -41,7 +41,7 @@ var getList = (stories, setFile) => {
 }
 
 var saveStory = (data, cb) => {
-    const url = '/admin/binpdo/saveStory';
+    const url = '/story/saveStory';
     const formData = new FormData();
     if (data.file !== undefined)
         formData.append('intro-image',data.file);
@@ -57,7 +57,8 @@ var saveStory = (data, cb) => {
         formData.append('selected', data.selected);
     const config = {
         headers: {
-            'content-type': 'multipart/form-data'
+            'content-type': 'multipart/form-data',
+            'Authorization': localStorage.getItem('jwtToken')
         }
     }
     //console.log(formData);
@@ -78,7 +79,7 @@ var saveStory = (data, cb) => {
 }
 
 var deleteStory = (id, cb) => {
-    axios.post('/admin/binpdo/deleteStory', {id})
+    axios.post('/story/deleteStory', {id}, { 'headers': { 'Authorization': localStorage.getItem('jwtToken')} })
     .then((result) => {
         console.log(result);
         cb(null, {msg: 'Successfully delete!'});

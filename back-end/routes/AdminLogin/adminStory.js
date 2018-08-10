@@ -3,6 +3,8 @@ const multer = require('multer');
 const s3module = require('./storyAttachment');
 const router = new express.Router();
 const Story = require('../../Models/Story');
+const passport = require('passport');
+require('./config/passport')(passport)
 
 // Multer config
 // memory storage keeps file data in a buffer
@@ -12,7 +14,38 @@ const upload = multer({
   limits: { fileSize: 52428800 },
 });
 
-router.post('/binpdo/uploadStory', upload.single('intro-image'), (req, res) => {
+////////////////////
+////AUTH
+///////////////////
+
+authorize = (req, res, next) => {
+    var token = getToken(req.headers)
+    if (token) {
+        next();
+    } else {
+        return res.status(401).json({success: false, msg: 'Unauthorized.'});
+    }
+}
+
+getToken = (headers) => {
+    if (headers && headers.authorization) {
+      var parted = headers.authorization.split(' ')
+      if (parted.length === 2) {
+        return parted[1]
+      } else {
+        return null
+      }
+    } else {
+      return null
+    }
+  }
+
+/////////////////////////
+
+router.post('/uploadStory',
+    passport.authenticate('jwt', { session: false}), 
+    authorize,
+    upload.single('intro-image'), (req, res) => {
     // req.file is the 'intro-image' file
 
     // Debug
@@ -58,7 +91,7 @@ router.post('/binpdo/uploadStory', upload.single('intro-image'), (req, res) => {
 
 //// Query from MongoDB
 //// Return to Front-end
-router.post('/binpdo/getAllStory', (req, res) => {
+router.post('/getAllStory', (req, res) => {
     Story.find((err, result) => {
         if (err)
             return res.status(400).json({success: false, error: err});
@@ -69,7 +102,7 @@ router.post('/binpdo/getAllStory', (req, res) => {
 //////////////////////
     ///// THESE APIs ARE MADE FOR TESTING
 //////////////////////
-router.post('/binpdo/getStoryFile', (req, res) => {
+router.post('/getStoryFile', (req, res) => {
     s3module.getFile(req.body.key, (err, result) => {
         if (err)
             return res.status(400).json({success: false, error: err});
@@ -78,7 +111,11 @@ router.post('/binpdo/getStoryFile', (req, res) => {
 });
 
 // Should return the saved Story and the image
-router.post('/binpdo/saveStory', upload.single('intro-image'), (req, res) => {
+router.post('/saveStory', 
+    passport.authenticate('jwt', { session: false}), 
+    authorize,
+    upload.single('intro-image'), 
+    (req, res) => {
     // req.file is the 'intro-image' file
 
     // Debug
@@ -177,7 +214,10 @@ router.post('/binpdo/saveStory', upload.single('intro-image'), (req, res) => {
 })
 
 
-router.post('/binpdo/deleteStory', (req, res) => {
+router.post('/deleteStory',
+    passport.authenticate('jwt', { session: false}), 
+    authorize,
+    (req, res) => {
     Story.findById(req.body.id).exec()
     .then((result) => {
         s3module.deleteFile(result.file, (err) => {

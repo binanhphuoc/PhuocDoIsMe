@@ -81,3 +81,26 @@
 .storylist.container{
     flex: 1;
 }
+
+.adminauth.box{
+    position: absolute;
+    width: 100vw; 
+    height:100vh;
+    margin:0;
+    padding:0;
+    background-color: whitesmoke;
+}
+
+.adminauth.form{
+    position: absolute;
+    width: 400px;
+    top:350px;
+    left: calc((100vw - 400px)/2)
+}
+
+.adminauth.image{
+    position: absolute;
+    left: calc((100vw - 250px)/2);
+    top: 120px;
+    width: 250px;
+}

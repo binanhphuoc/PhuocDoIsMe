@@ -72,7 +72,7 @@ import './adminLogin.css'
     showResponse(err, res) {
         if (err)
             {
-                console.log(err);
+                console.log(err.response);
                 this.setState({msg: err});
             }
             else

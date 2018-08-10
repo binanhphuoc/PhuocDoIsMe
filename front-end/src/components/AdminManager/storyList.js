@@ -109,6 +109,24 @@ const customTagStyle = {
         */
     }
 
+    componentDidMount() {
+
+        //Authenticate User, if not login redirect user to login page, if already Login
+        //take user to homepage
+        //axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+        axios.get('/admin/auth', { 'headers': { 'Authorization': localStorage.getItem('jwtToken')} })
+          .then(res => {
+            //display homepage (App.js)
+            // res contains all the information from the back-end
+            
+          })
+          .catch((error) => {
+            console.log(error)
+            //redirect to login page
+            this.props.history.push("/admin/login");
+          });
+      }
+
     setCustomTags (i) {
         return (
             i.tags.map((t) => {
@@ -210,6 +228,11 @@ const customTagStyle = {
         }
     }
 
+    logout = () => {
+        localStorage.removeItem('jwtToken');
+        window.location.reload();
+    }
+
     render(){
         console.log(this.state.stories);
         var images =
@@ -225,7 +248,9 @@ const customTagStyle = {
 
         return (
             <div>
-                
+                <button 
+                style={{position: "fixed", right: 20+"px", bottom: 20+"px"}}
+                type="submit" class="btn btn-primary" onClick={this.logout}>Log Out</button>
                 <div className="storylist photogrid">
                     <Gallery images={images} 
                     enableLightbox={false} 
