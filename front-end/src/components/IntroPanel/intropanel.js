@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './intropanel.css';
-import 'react-responsive-carousel/lib/styles/carousel.css';
+import '../../node_modules_no_update/react-responsive-carousel/lib/styles/carousel.css';
 import { Carousel } from '../../node_modules_no_update/react-responsive-carousel';
 import iconPrev from './slider-left-arrow.svg';
 import iconNext from './slider-right-arrow.svg';
