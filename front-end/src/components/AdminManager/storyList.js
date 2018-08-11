@@ -195,7 +195,7 @@ const customTagStyle = {
                     pos: prevState.stories.length,  //////// Pos of the image in the array
                     src: res.file,
                     thumbnail: res.file,
-                    thumbnailWidth: 320,
+                    thumbnailWidth: 'auto',
                     thumbnailHeight: 320,
                     isSelected: false,
                     caption: res.story.title,

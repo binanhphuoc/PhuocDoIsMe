@@ -1,0 +1,28 @@
+{
+  "name": "phuocdoisme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm-run-all -p start:back-end start:front-end",
+    "start:back-end": "npm run start --prefix front-end",
+    "start:front-end": "npm run start --prefix back-end"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binanhphuoc/PhuocDoIsMe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/binanhphuoc/PhuocDoIsMe/issues"
+  },
+  "homepage": "https://github.com/binanhphuoc/PhuocDoIsMe#readme",
+  "dependencies": {
+    "npm-run-all": "^4.1.3"
+  }
+}

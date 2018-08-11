@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ImageGallery from 'react-image-gallery';
 import './intropanel.css';
-import 'react-responsive-carousel/lib/styles/carousel.css';
+import './carousel.css';
 import { Carousel } from 'react-responsive-carousel';
 import iconPrev from './slider-left-arrow.svg';
 import iconNext from './slider-right-arrow.svg';
