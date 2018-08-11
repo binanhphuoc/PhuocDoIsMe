@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import ImageGallery from 'react-image-gallery';
 import './intropanel.css';
-import './carousel.css';
-import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.css';
+import { Carousel } from '../../node_modules_no_update/react-responsive-carousel';
 import iconPrev from './slider-left-arrow.svg';
 import iconNext from './slider-right-arrow.svg';
 import StoryAPI from '../AdminManager/storyAPI';
