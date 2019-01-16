@@ -8,9 +8,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm-run-all -p start:back-end start:front-end",
+    "start-1": "npm-run-all -p start:back-end start:front-end",
     "start:back-end": "npm run start --prefix front-end",
-    "start:front-end": "npm run start --prefix back-end"
+    "start:front-end": "npm run start --prefix back-end",
+    "start": "cd back-end/ && npm install && npm start",
+    "heroku-postbuild": "cd front-end/ && npm install && npm start"
   },
   "repository": {
     "type": "git",
