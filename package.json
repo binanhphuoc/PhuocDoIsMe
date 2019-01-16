@@ -14,6 +14,10 @@
     "start": "cd back-end/ && npm install && npm start",
     "heroku-postbuild": "cd front-end/ && npm install && npm start"
   },
+  "cacheDirectories": [
+    "back-end/node_modules",
+    "front-end/node_modules"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/binanhphuoc/PhuocDoIsMe.git"
