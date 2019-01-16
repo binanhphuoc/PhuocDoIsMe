@@ -1,3 +1,2 @@
-web: 
-npm install --prefix ./front-end && 
+web: npm install --prefix ./front-end && 
 npm start --prefix ./front-end
